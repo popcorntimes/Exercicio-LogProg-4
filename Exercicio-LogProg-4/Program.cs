@@ -1,82 +1,22 @@
 ﻿using System;
 int a = 10, b = 1;
-TestClass<string>.Compare(a, b);
+TestClass.Compare(a, b);
 string c = "hi", d = "bye";
-TestClass<string>.Compare(c, d);
+TestClass.Compare(c, d);
 double e = 10.2, f = 10.2;
-TestClass<string>.Compare(e, f);
-TestClass<string>.Compare(c, f);
+TestClass.Compare(e, f);
 
-public class TestClass<T> where T : IComparable<T>
+
+public class TestClass
 {
-    public static void Compare(string a, string b)
-    {
-        Console.WriteLine("String");
-        if (a.CompareTo(b) > 0)
-        {
-            Console.WriteLine("Not equals");
-        }
-        else
-        if (a.CompareTo(b) < 0)
-        {
-            Console.WriteLine("Not equals");
-        }
-        else
-        {
-            Console.WriteLine("Equals");
-        }
-    }
-    public static void Compare(int a, int b)
-    {
-        Console.WriteLine("Int");
-        if (a.CompareTo(b) > 0)
-        {
-            Console.WriteLine("Not equals");
-        }
-        else
-        if (a.CompareTo(b) < 0)
-        {
-            Console.WriteLine("Not equals");
-        }
-        else
-        {
-            Console.WriteLine("Equals");
-        }
-    }
+    public static bool Compare(string a, string b) => a == b;
 
-    public static void Compare(double a, double b)
-    {
-        Console.WriteLine("Double");
-        if (a.CompareTo(b) > 0)
-        {
-            Console.WriteLine("Not equals");
-        }
-        else
-        if (a.CompareTo(b) < 0)
-        {
-            Console.WriteLine("Not equals");
-        }
-        else
-        {
-            Console.WriteLine("Equals");
-        }
-    }
+    public static bool Compare(int a, int b) => a == b;
 
-    public static void Compare(T a, T b)
+    public static bool Compare(double a, double b) => a == b;
+
+    public static bool Compare<T>(T a, T b)
     {
-        Console.WriteLine("Generic");
-        if (a.CompareTo(b) > 0)
-        {
-            Console.WriteLine("Not equals");
-        }
-        else
-        if (a.CompareTo(b) < 0)
-        {
-            Console.WriteLine("Not equals");
-        }
-        else
-        {
-            Console.WriteLine("Equals");
-        }
+        return a.Equals(b);
     }
 }
